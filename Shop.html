@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shop Collection</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #0b0b0b;
+      color: #fff;
+    }
+
+    h1 {
+      text-align: center;
+      margin: 20px 0;
+      letter-spacing: 2px;
+    }
+
+    /* KATEGORI */
+    .category {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    .category button {
+      padding: 10px 16px;
+      border-radius: 20px;
+      border: none;
+      background: #1f1f1f;
+      color: #fff;
+      cursor: pointer;
+    }
+
+    .category button.active {
+      background: #fff;
+      color: #000;
+    }
+
+    /* GRID PRODUK */
+    .products {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 15px;
+      padding: 15px;
+    }
+
+    .product {
+      background: #141414;
+      border-radius: 14px;
+      overflow: hidden;
+    }
+
+    .product img {
+      width: 100%;
+      display: block;
+    }
+
+    .product p {
+      text-align: center;
+      padding: 10px;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+
+<h1>SHOP COLLECTION</h1>
+
+<!-- KATEGORI -->
+<div class="category">
+  <button onclick="filter('all')" class="active">All</button>
+  <button onclick="filter('celana')">Celana</button>
+  <button onclick="filter('pakaian')">Pakaian</button>
+  <button onclick="filter('jaket')">Jaket</button>
+</div>
+
+<!-- PRODUK -->
+<div class="products">
+  <div class="product celana">
+    <img src="images/celana1.jpg">
+    <p>Celana Hitam</p>
+  </div>
+
+  <div class="product celana">
+    <img src="images/celana2.jpg">
+    <p>Celana Street</p>
+  </div>
+
+  <div class="product jaket">
+    <img src="images/jaket1.jpg">
+    <p>Jaket Hoodie</p>
+  </div>
+
+  <div class="product pakaian">
+    <img src="images/pakaian1.jpg">
+    <p>T-Shirt Basic</p>
+  </div>
+</div>
+
+<script>
+  function filter(category) {
+    const items = document.querySelectorAll('.product');
+    const buttons = document.querySelectorAll('.category button');
+
+    buttons.forEach(btn => btn.classList.remove('active'));
+    event.target.classList.add('active');
+
+    items.forEach(item => {
+      if (category === 'all' || item.classList.contains(category)) {
+        item.style.display = 'block';
+      } else {
+        item.style.display = 'none';
+      }
+    });
+  }
+</script>
+
+</body>
+</html>
