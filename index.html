@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>DSTRCT-2509</title>
+  <title>DSTRCT-2509 | Official Links</title>
 
   <style>
     * {
@@ -12,14 +12,13 @@
 
     body {
       margin: 0;
-      background: radial-gradient(circle at top, #1a1a1a, #000000);
-      font-family: Arial, Helvetica, sans-serif;
-      color: #ffffff;
+      min-height: 100vh;
       display: flex;
       justify-content: center;
       align-items: center;
-      min-height: 100vh;
-      overflow-x: hidden;
+      background: radial-gradient(circle at top, #1a1a1a, #000);
+      font-family: Arial, Helvetica, sans-serif;
+      color: #fff;
     }
 
     .container {
@@ -29,77 +28,54 @@
       text-align: center;
     }
 
+    /* LOGO */
     .logo {
-  width: 120px;
-  margin-bottom: 20px;
-  filter: drop-shadow(0 0 20px rgba(255,255,255,0.2));
+      width: 160px;
+      height: auto;
+      margin-bottom: 20px;
+      filter: drop-shadow(0 10px 25px rgba(0,0,0,0.6));
     }
 
     h1 {
       margin: 0;
-      font-size: 28px;
+      font-size: 24px;
       letter-spacing: 2px;
     }
 
-    .desc {
-      margin-top: 12px;
+    .tagline {
+      margin-top: 10px;
       font-size: 14px;
       color: #bdbdbd;
       line-height: 1.6;
     }
 
-    .links {
-      margin-top: 32px;
-    }
-
-    .link {
-      position: relative;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
+    /* BUTTON */
+    .btn {
+      display: block;
+      width: 100%;
+      margin-top: 16px;
       padding: 16px;
-      margin-bottom: 16px;
-      background: linear-gradient(145deg, #1a1a1a, #0f0f0f);
+      background: linear-gradient(145deg, #141414, #0a0a0a);
       color: #ffffff;
       text-decoration: none;
       border-radius: 16px;
-      font-size: 16px;
-      border: 1px solid rgba(255,255,255,0.08);
-      box-shadow: 0 10px 25px rgba(0,0,0,0.6);
-      transition: transform 0.15s ease, box-shadow 0.15s ease;
-      overflow: hidden;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      box-shadow:
+        0 8px 20px rgba(0,0,0,0.6),
+        inset 0 0 0 1px rgba(255,255,255,0.08);
+      transition: all 0.25s ease;
     }
 
-    .link:active {
-      transform: scale(0.96);
+    .btn:hover {
+      transform: scale(1.03);
+      background: linear-gradient(145deg, #1f1f1f, #111);
     }
 
-    /* LOADING LOOP */
-    .loader {
-      display: none;
-      width: 16px;
-      height: 16px;
-      border: 2px solid rgba(255,255,255,0.3);
-      border-top: 2px solid #ffffff;
-      border-radius: 50%;
-      position: absolute;
-      right: 18px;
-      top: 50%;
-      transform: translateY(-50%);
-      animation: spin 0.8s linear infinite;
-    }
-
-    @keyframes spin {
-      to {
-        transform: rotate(360deg) translateY(-50%);
-      }
-    }
-
-    .footer {
-      margin-top: 32px;
+    footer {
+      margin-top: 28px;
       font-size: 12px;
-      color: #777;
+      color: #666;
     }
   </style>
 </head>
@@ -107,53 +83,22 @@
 <body>
   <div class="container">
 
-    <!-- LOGO -->
+    <!-- GANTI src LOGO SESUAI FILE KAMU -->
     <img src="logo.png" alt="DSTRCT-2509 Logo" class="logo" />
 
-    <!-- TITLE -->
     <h1>DSTRCT-2509</h1>
 
-    <!-- DESCRIPTION -->
-    <div class="desc">
+    <div class="tagline">
       Modern clothing essentials<br />
       Clean • Simple • Timeless
     </div>
 
     <!-- BUTTONS -->
-    <div class="links">
+    <a href="shop.html" class="btn">🛒 Shop Collection</a>
+    <a href="best-seller.html" class="btn">🔥 Best Seller</a>
+    <a href="https://shopee.co.id/ISI_LINK_TOKO_KAMU" class="btn">📦 Shopee Store</a>
 
-      <a href="shop.html" class="btn">
-        🛒 Shop Collection
-        <span class="loader"></span>
-      </a>
-
-      <a href="https://shopee.co.id" class="link" onclick="handleClick(event, this)">
-        🔥 Best Seller
-        <span class="loader"></span>
-      </a>
-
-      <a href="https://shopee.co.id" class="link" onclick="handleClick(event, this)">
-        📦 Shopee Store
-        <span class="loader"></span>
-      </a>
-
-    </div>
-
-    <div class="footer">© 2026 DSTRCT-2509</div>
+    <footer>© 2026 DSTRCT-2509</footer>
   </div>
-
-  <!-- JS PREMIUM CLICK -->
-  <script>
-    function handleClick(event, el) {
-      event.preventDefault();
-
-      const loader = el.querySelector('.loader');
-      loader.style.display = 'block';
-
-      setTimeout(() => {
-        window.location.href = el.href;
-      }, 700);
-    }
-  </script>
 </body>
 </html>
