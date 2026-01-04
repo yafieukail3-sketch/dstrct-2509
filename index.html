@@ -12,7 +12,7 @@
 
     body {
       margin: 0;
-      background: #0f0f0f;
+      background: radial-gradient(circle at top, #1a1a1a, #000000);
       font-family: Arial, Helvetica, sans-serif;
       color: #ffffff;
       display: flex;
@@ -31,8 +31,8 @@
 
     .logo {
       width: 120px;
-      height: auto;
       margin-bottom: 20px;
+      filter: drop-shadow(0 0 20px rgba(255,255,255,0.2));
     }
 
     h1 {
@@ -49,26 +49,55 @@
     }
 
     .links {
-      margin-top: 30px;
+      margin-top: 32px;
     }
 
     .link {
+      position: relative;
       display: flex;
       align-items: center;
       justify-content: center;
       gap: 10px;
       padding: 16px;
       margin-bottom: 16px;
-      background: #1a1a1a;
+      background: linear-gradient(145deg, #1a1a1a, #0f0f0f);
       color: #ffffff;
       text-decoration: none;
-      border-radius: 14px;
+      border-radius: 16px;
       font-size: 16px;
-      border: 1px solid #ffffff10;
+      border: 1px solid rgba(255,255,255,0.08);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.6);
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+      overflow: hidden;
+    }
+
+    .link:active {
+      transform: scale(0.96);
+    }
+
+    /* LOADING LOOP */
+    .loader {
+      display: none;
+      width: 16px;
+      height: 16px;
+      border: 2px solid rgba(255,255,255,0.3);
+      border-top: 2px solid #ffffff;
+      border-radius: 50%;
+      position: absolute;
+      right: 18px;
+      top: 50%;
+      transform: translateY(-50%);
+      animation: spin 0.8s linear infinite;
+    }
+
+    @keyframes spin {
+      to {
+        transform: rotate(360deg) translateY(-50%);
+      }
     }
 
     .footer {
-      margin-top: 30px;
+      margin-top: 32px;
       font-size: 12px;
       color: #777;
     }
@@ -92,14 +121,39 @@
 
     <!-- BUTTONS -->
     <div class="links">
-      <a href="#" class="link">🛒 Shop Collection</a>
-      <a href="#" class="link">🔥 Best Seller</a>
-      <a href="#" class="link">📦 Shopee Store</a>
+
+      <a href="https://shopee.co.id" class="link" onclick="handleClick(event, this)">
+        🛒 Shop Collection
+        <span class="loader"></span>
+      </a>
+
+      <a href="https://shopee.co.id" class="link" onclick="handleClick(event, this)">
+        🔥 Best Seller
+        <span class="loader"></span>
+      </a>
+
+      <a href="https://shopee.co.id" class="link" onclick="handleClick(event, this)">
+        📦 Shopee Store
+        <span class="loader"></span>
+      </a>
+
     </div>
 
-    <!-- FOOTER -->
     <div class="footer">© 2026 DSTRCT-2509</div>
-
   </div>
+
+  <!-- JS PREMIUM CLICK -->
+  <script>
+    function handleClick(event, el) {
+      event.preventDefault();
+
+      const loader = el.querySelector('.loader');
+      loader.style.display = 'block';
+
+      setTimeout(() => {
+        window.location.href = el.href;
+      }, 700);
+    }
+  </script>
 </body>
 </html>
