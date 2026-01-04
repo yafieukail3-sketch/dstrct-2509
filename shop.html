@@ -1,122 +1,70 @@
-<!DOCTYPE html>
-<html lang="id">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Shop Collection</title>
+<!-- SHOP COLLECTION -->
+<section class="shop">
 
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #0b0b0b;
-      color: #fff;
-    }
-
-    h1 {
-      text-align: center;
-      margin: 20px 0;
-      letter-spacing: 2px;
-    }
-
-    /* KATEGORI */
-    .category {
-      display: flex;
-      justify-content: center;
-      gap: 10px;
-      margin-bottom: 20px;
-    }
-
-    .category button {
-      padding: 10px 16px;
-      border-radius: 20px;
-      border: none;
-      background: #1f1f1f;
-      color: #fff;
-      cursor: pointer;
-    }
-
-    .category button.active {
-      background: #fff;
-      color: #000;
-    }
-
-    /* GRID PRODUK */
-    .products {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 15px;
-      padding: 15px;
-    }
-
-    .product {
-      background: #141414;
-      border-radius: 14px;
-      overflow: hidden;
-    }
-
-    .product img {
-      width: 100%;
-      display: block;
-    }
-
-    .product p {
-      text-align: center;
-      padding: 10px;
-      font-size: 14px;
-    }
-  </style>
-</head>
-<body>
-
-<h1>SHOP COLLECTION</h1>
-
-<!-- KATEGORI -->
-<div class="category">
-  <button onclick="filter('all')" class="active">All</button>
-  <button onclick="filter('celana')">Celana</button>
-  <button onclick="filter('pakaian')">Pakaian</button>
-  <button onclick="filter('jaket')">Jaket</button>
-</div>
-
-<!-- PRODUK -->
-<div class="product" data-category="celana">
-  <img src="images/celana1.jpg" alt="Celana DSTRCT">
-  <p>Celana Cargo Hitam</p>
-</div>
-  <div class="product celana">
-    <img src="images/celana2.jpg">
-    <p>Celana Street</p>
+  <div class="categories">
+    <button class="active" onclick="filterCategory('all', this)">All</button>
+    <button onclick="filterCategory('kaos', this)">Kaos</button>
+    <button onclick="filterCategory('celana', this)">Celana</button>
+    <button onclick="filterCategory('jaket', this)">Jaket</button>
   </div>
 
-  <div class="product jaket">
-    <img src="images/jaket1.jpg">
-    <p>Jaket Hoodie</p>
+  <div class="products">
+    <div class="product" data-category="kaos">
+      <img src="images/kaos1.jpg">
+    </div>
+
+    <div class="product" data-category="celana">
+      <img src="images/celana1.jpg">
+    </div>
+
+    <div class="product" data-category="jaket">
+      <img src="images/jaket1.jpg">
+    </div>
   </div>
 
-  <div class="product pakaian">
-    <img src="images/pakaian1.jpg">
-    <p>T-Shirt Basic</p>
-  </div>
-</div>
+</section>
+
+<style>
+.shop{padding:16px}
+.categories{display:flex;gap:10px;margin-bottom:14px}
+.categories button{
+  padding:8px 14px;
+  border-radius:18px;
+  border:none;
+  background:#111;
+  color:#bbb;
+  font-size:13px;
+}
+.categories button.active{
+  background:#6c5ce7;
+  color:#fff;
+}
+.products{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:14px;
+}
+.product{
+  background:#111;
+  border-radius:14px;
+  padding:8px;
+}
+.product img{
+  width:100%;
+  border-radius:10px;
+}
+</style>
 
 <script>
-  function filter(category) {
-    const items = document.querySelectorAll('.product');
-    const buttons = document.querySelectorAll('.category button');
+function filterCategory(cat, el){
+  document.querySelectorAll('.categories button')
+    .forEach(b=>b.classList.remove('active'));
+  el.classList.add('active');
 
-    buttons.forEach(btn => btn.classList.remove('active'));
-    event.target.classList.add('active');
-
-    items.forEach(item => {
-      if (category === 'all' || item.classList.contains(category)) {
-        item.style.display = 'block';
-      } else {
-        item.style.display = 'none';
-      }
+  document.querySelectorAll('.product')
+    .forEach(p=>{
+      p.style.display =
+        cat==='all'||p.dataset.category===cat ? 'block':'none';
     });
-  }
+}
 </script>
-
-</body>
-</html>
